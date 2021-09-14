@@ -1,6 +1,4 @@
-package com.example.springpetclinic.model;
-
-import javax.servlet.SessionTrackingMode;
+package com.example.petclinicdata.model;
 
 public class PetType {
 
