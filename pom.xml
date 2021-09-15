@@ -50,7 +50,19 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <configuration>
+                    <goal>install</goal>
+
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <scm>
+        <developerConnection>scm:git:https://github.com/tevrat-aksoy/spring-pet-clinic.git</developerConnection>
+    </scm>
 
 </project>

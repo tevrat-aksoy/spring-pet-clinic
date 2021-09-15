@@ -1,6 +1,6 @@
 package com.example.petclinicdata.model;
 
-public class PetType {
+public class PetType  {
 
     private String name;
 
