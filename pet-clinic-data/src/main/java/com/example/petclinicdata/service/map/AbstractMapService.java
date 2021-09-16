@@ -1,14 +1,13 @@
 package com.example.petclinicdata.service.map;
 
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import com.example.petclinicdata.model.BaseEntity;
 
-public class AbstractMapService <T,ID>{
+import java.util.*;
 
-    protected Map<ID,T> map=new HashMap<>();
+public class AbstractMapService <T extends BaseEntity,ID extends Long>{
+
+    protected Map<Long,T> map=new HashMap<>();
 
     Set<T> findall(){
         return new HashSet<>(map.values());
@@ -17,8 +16,17 @@ public class AbstractMapService <T,ID>{
     T findByID(ID id){
         return map.get(id);
     }
-    T save(ID id,T object){
-        map.put(id,object);
+    T save(T object){
+        if(object!=null){
+            if(object.getId()==null){
+                object.setId(object.getId());
+            }
+            map.put(object.getId(), object);
+        }
+        else {
+            throw new RuntimeException("Object cant be null");
+        }
+
         return object;
     }
     void deleteByID(ID id){
@@ -28,4 +36,12 @@ public class AbstractMapService <T,ID>{
     void delete(T object)  {
         map.entrySet().removeIf(entry->entry.getValue().equals(object));
     }
+
+    private Long getNextID(){
+
+        return Collections.max(map.keySet())+ 1;
+
+    }
+
 }
+

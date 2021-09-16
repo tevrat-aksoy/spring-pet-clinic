@@ -2,7 +2,6 @@ package com.example.petclinicdata.model;
 
 
 
-
 public class Person extends BaseEntity{
 
     private String firstName;
